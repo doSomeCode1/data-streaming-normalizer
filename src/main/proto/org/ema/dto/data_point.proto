@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+
+package org.ema.dto;
+
+import "org/ema/dto/struct.proto";
+
+message InputDataPoint {
+  string id = 1;
+  string partner_id = 2;
+  PartnerType partner_type = 3;
+  org.ema.dto.Struct data = 4;
+}
+
+enum PartnerType {
+  PARTNER_TYPE_UNSPECIFIED = 0;
+  PARTNER_TYPE_JIRA = 1;
+  PARTNER_TYPE_RIPPLING = 2;
+}
+

@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+
+package org.ema.dto;
+
+message NormalizedDataPoint {
+  string id = 1;
+  string partner_id = 2;
+  oneof input_message {
+    RecruitingEvent recruiting_event = 3;
+    TicketingEvent ticketing_event = 4;
+  }
+}
+
+message TicketingEvent {
+  string name = 1;
+  string description = 2;
+  string title = 3;
+  string assignee = 4;
+  Status status = 5;
+
+  enum Status {
+    STATUS_UNSPECIFIED = 0;
+    STATUS_OPEN = 1;
+    STATUS_IN_PROGRESS = 2;
+    STATUS_DONE = 3;
+  }
+}
+
+message RecruitingEvent {
+  string name = 1;
+  string title = 3;
+  string assignee = 4;
+  int64 years_of_experience = 5;
+  string company = 6;
+}
